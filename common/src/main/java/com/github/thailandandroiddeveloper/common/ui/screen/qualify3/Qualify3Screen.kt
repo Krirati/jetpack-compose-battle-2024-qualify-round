@@ -7,8 +7,11 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -59,6 +62,7 @@ fun Qualify3Screen() {
                 CardItem(R.drawable.img_qualify_3_photo_2, false)
                 CardItem(R.drawable.img_qualify_3_photo_3, false)
             }
+
             Tags()
 
             CardContent(
@@ -104,19 +108,18 @@ fun CardItem(image: Int, withBorder: Boolean) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun Tags() {
     val lists = listOf("Tag 1", "Tag 2", "Tag 3", "Tag 4")
-    Row(
-        horizontalArrangement = Arrangement.SpaceAround,
-        modifier = Modifier
-            .padding(start = 8.dp)
-            .padding(vertical = 8.dp)
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier.padding(16.dp)
     ) {
-        lists.forEach {
+        lists.forEach { it ->
             FilterChip(
-                modifier = Modifier.padding(start = 8.dp),
+                modifier = Modifier
+                    .height(32.dp),
                 selected = it.contains("1"),
                 onClick = { },
                 label = { Text(it, style = MaterialTheme.typography.labelLarge) },
@@ -146,7 +149,6 @@ fun AppBar() {
         title = {
             Text(
                 "John Doe",
-                maxLines = 1,
                 style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.onPrimaryContainer)
             )
         },
@@ -202,6 +204,7 @@ fun CardContent(title: String, body: String) {
     ) {
         Row(
             modifier = Modifier
+                .height(96.dp)
                 .background(color = MaterialTheme.colorScheme.surface)
                 .border(
                     width = 1.dp,
