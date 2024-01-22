@@ -61,9 +61,22 @@ fun Qualify3Screen() {
             }
             Tags()
 
-            for (i in 0..3) {
-                CardContent()
-            }
+            CardContent(
+                title = "Lorem Ipsum",
+                body = "Duis dignissim pulvinar lectus imperdiet tempus. Curabitur fringilla commodo consectetur. Sed congue blandit nibh."
+            )
+            CardContent(
+                title = "Lorem Ipsum",
+                body = "Morbi sed sagittis justo, at pulvinar ipsum. Praesent massa metus, interdum at suscipit a, interdum vel orci. Pellentesque in sapien. Integer faucibus mauris ac luctus aliquam accumsan."
+            )
+            CardContent(
+                title = "Lorem Ipsum",
+                body = "Duis dignissim pulvinar lectus imperdiet tempus. Curabitur fringilla commodo."
+            )
+            CardContent(
+                title = "Lorem Ipsum",
+                body = "Ut hendrerit neque nec accumsan hendrerit. Fusce lobortis rhoncus erat, a blandit nibh molestie vel. Cras commodo ligula ex, vitae venenatis lacus facilisis eget."
+            )
         }
     }
 }
@@ -72,15 +85,15 @@ fun Qualify3Screen() {
 fun CardItem(image: Int, withBorder: Boolean) {
     Box(
         modifier = Modifier
-            .padding(start =16.dp)
+            .padding(start = 16.dp)
             .size(160.dp, 320.dp)
             .clip(RoundedCornerShape(16.dp))
     ) {
         Image(
             modifier = Modifier
                 .border(
-                    width = if (withBorder) 2.dp else 0.dp,
-                    color = MaterialTheme.colorScheme.primary,
+                    width = 2.dp,
+                    color = if (withBorder) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primaryContainer,
                     shape = RoundedCornerShape(16.dp)
                 )
                 .clip(RoundedCornerShape(16.dp)),
@@ -98,15 +111,15 @@ fun Tags() {
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
         modifier = Modifier
-            .padding(start = 16.dp)
+            .padding(start = 8.dp)
             .padding(vertical = 8.dp)
     ) {
         lists.forEach {
             FilterChip(
-                modifier = Modifier.padding(end = 8.dp),
+                modifier = Modifier.padding(start = 8.dp),
                 selected = it.contains("1"),
                 onClick = { },
-                label = { Text(it) },
+                label = { Text(it, style = MaterialTheme.typography.labelLarge) },
                 colors = FilterChipDefaults.filterChipColors(
                     labelColor = MaterialTheme.colorScheme.outline,
                     selectedLabelColor = MaterialTheme.colorScheme.primary,
@@ -114,7 +127,7 @@ fun Tags() {
                 ),
                 border = FilterChipDefaults.filterChipBorder(
                     selectedBorderColor = MaterialTheme.colorScheme.primary,
-                    selectedBorderWidth = 2.dp,
+                    selectedBorderWidth = 1.dp,
                     borderColor = MaterialTheme.colorScheme.outline,
                 )
             )
@@ -169,11 +182,12 @@ fun AppBar() {
 }
 
 @Composable
-fun CardContent() {
+fun CardContent(title: String, body: String) {
     Box(
         modifier = Modifier
             .padding(bottom = 16.dp)
             .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(16.dp))
     ) {
         Row(
             modifier = Modifier
@@ -193,12 +207,17 @@ fun CardContent() {
                     .clip(CircleShape)
             )
             Column(modifier = Modifier.padding(start = 8.dp)) {
-                Text(text = "Lorem Ipsum", style = MaterialTheme.typography.titleMedium)
                 Text(
-                    text = "Morbi sed sagittis justo, at pulvinar ipsum. Praesent massa metus, interdum at suscipit a, interdum vel orci. Pellentesque in sapien. Integer faucibus mauris ac luctus aliquam accumsan.",
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = body,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }

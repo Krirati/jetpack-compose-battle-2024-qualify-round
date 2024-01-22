@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -62,7 +63,10 @@ fun Qualify2Screen() {
                 Text(
                     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas dictum lacinia. Integer arcu neque, porttitor ac metus quis, iaculis molestie magna. Vivamus molestie justo sed nulla lacinia, quis fringilla lorem imperdiet. Proin in quam vel odio iaculis fringilla",
                     style = MaterialTheme.typography.bodyMedium
-                        .copy(color = MaterialTheme.colorScheme.onSurface),
+                        .copy(
+                            color = MaterialTheme.colorScheme.onSurface,
+                            textAlign = TextAlign.Center
+                        ),
                 )
 
                 Spacer(modifier = Modifier.height(32.dp))
@@ -86,14 +90,19 @@ fun Qualify2Screen() {
                 modifier = Modifier
                     .background(color = MaterialTheme.colorScheme.primaryContainer)
                     .height(102.dp)
+                    .fillMaxWidth()
             ) {
                 Button(
                     onClick = { /*TODO*/ }, modifier = Modifier
-                        .background(color = MaterialTheme.colorScheme.primaryContainer)
                         .fillMaxWidth()
-                        .padding(vertical = 31.dp, horizontal = 80.dp)
+                        .padding(vertical = 31.dp, horizontal = 80.dp),
+                    colors = ButtonDefaults.textButtonColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.primary
+                    )
+
                 ) {
-                    Text(text = "Next")
+                    Text(text = "Next", color = MaterialTheme.colorScheme.onPrimary)
                 }
             }
         }
