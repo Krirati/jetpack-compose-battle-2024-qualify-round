@@ -64,24 +64,25 @@ fun AppBar() {
         colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         navigationIcon = {
             IconButton(
-                onClick = { /*TODO*/ },
-            ) {
+                modifier = Modifier.size(48.dp),
+                onClick = { /* do something */ }) {
                 Icon(
-                    modifier = Modifier.fillMaxSize(),
-                    painter = painterResource(id = R.drawable.ic_qualify_1_menu),
-                    contentDescription = "menu button",
+                    painterResource(id = R.drawable.ic_qualify_1_menu),
+                    contentDescription = "Back",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
         },
         actions = {
             IconButton(
-                modifier = Modifier.size(40.dp),
+                modifier = Modifier.size(48.dp),
                 onClick = { /*TODO*/ },
             ) {
                 Icon(
                     modifier = Modifier.fillMaxSize(),
                     painter = painterResource(id = R.drawable.ic_qualify_1_profile),
                     contentDescription = "profile button",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
         },
