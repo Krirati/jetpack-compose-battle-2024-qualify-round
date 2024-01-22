@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -40,7 +41,7 @@ import com.github.thailandandroiddeveloper.common.ui.theme.AppTheme
 @Composable
 fun Qualify2Screen() {
     Scaffold(
-        topBar = { SkipButton() },
+        topBar = { },
         containerColor = MaterialTheme.colorScheme.onPrimary
     ) { contentPadding ->
         Column(
@@ -49,27 +50,37 @@ fun Qualify2Screen() {
                 .verticalScroll(rememberScrollState())
                 .padding(contentPadding),
         ) {
-            Column(
-                modifier = Modifier
-                    .padding(horizontal = 32.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            SkipButton()
+        }
+        Column(
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxHeight()
+        ) {
+            Box(modifier = Modifier.padding(16.dp)) {
                 Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(38.dp),
                     text = "Lorem ipsum dolor sit amet",
                     style = MaterialTheme.typography.headlineSmall
-                        .copy(color = MaterialTheme.colorScheme.onSurface)
+                        .copy(
+                            color = MaterialTheme.colorScheme.onSurface,
+                            textAlign = TextAlign.Center
+                        )
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+            }
+            Box(modifier = Modifier.padding(horizontal = 32.dp)) {
                 Text(
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas dictum lacinia. Integer arcu neque, porttitor ac metus quis, iaculis molestie magna. Vivamus molestie justo sed nulla lacinia, quis fringilla lorem imperdiet. Proin in quam vel odio iaculis fringilla",
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas dictum lacinia. Integer arcu\n neque, porttitor ac metus quis, iaculis molestie magna. Vivamus molestie justo sed nulla lacinia, quis fringilla lorem imperdiet. Proin in quam vel odio  iaculis fringilla",
                     style = MaterialTheme.typography.bodyMedium
                         .copy(
                             color = MaterialTheme.colorScheme.onSurface,
                             textAlign = TextAlign.Center
-                        ),
+                        )
                 )
-
-                Spacer(modifier = Modifier.height(32.dp))
+            }
+            Box(modifier = Modifier.padding(31.dp)) {
                 Image(
                     modifier = Modifier
                         .clip(RoundedCornerShape(16.dp)),
@@ -77,37 +88,44 @@ fun Qualify2Screen() {
                     contentDescription = "",
                     contentScale = ContentScale.FillWidth
                 )
-                Spacer(modifier = Modifier.height(32.dp))
+            }
+            Box(modifier = Modifier.padding(bottom = 48.dp)) {
                 DotIndicator()
             }
-        }
-        Column(
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxHeight()
-        ) {
-            Box(
-                modifier = Modifier
-                    .background(color = MaterialTheme.colorScheme.primaryContainer)
-                    .height(102.dp)
-                    .fillMaxWidth()
-            ) {
-                Button(
-                    onClick = { /*TODO*/ }, modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 31.dp, horizontal = 80.dp),
-                    colors = ButtonDefaults.textButtonColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.primary
-                    )
-
-                ) {
-                    Text(text = "Next", color = MaterialTheme.colorScheme.onPrimary)
-                }
-            }
+            StickyButton()
         }
     }
 }
+
+@Composable
+private fun StickyButton() {
+    Column(
+        modifier = Modifier
+            .background(color = MaterialTheme.colorScheme.primaryContainer)
+            .height(102.dp)
+            .padding(horizontal = 80.dp)
+            .fillMaxWidth(),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            onClick = { /*TODO*/ }, modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp),
+            colors = ButtonDefaults.textButtonColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.primary
+            )
+
+        ) {
+            Text(
+                text = "Next",
+                color = MaterialTheme.colorScheme.onPrimary,
+                style = MaterialTheme.typography.labelLarge
+            )
+        }
+    }
+}
+
 
 @Composable
 fun SkipButton() {
@@ -115,8 +133,18 @@ fun SkipButton() {
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.End
     ) {
-        TextButton(onClick = { /*TODO*/ }, modifier = Modifier.padding(8.dp)) {
-            Text(text = "Skip")
+        TextButton(
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .padding(end = 6.dp, top = 6.dp),
+            contentPadding = PaddingValues(
+                start = 12.dp,
+                top = 10.dp,
+                end = 12.dp,
+                bottom = 10.dp,
+            )
+        ) {
+            Text(text = "Skip", style = MaterialTheme.typography.labelLarge)
         }
     }
 }
