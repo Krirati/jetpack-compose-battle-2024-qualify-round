@@ -151,30 +151,42 @@ fun AppBar() {
             )
         },
         navigationIcon = {
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(
+                modifier = Modifier.size(48.dp),
+                onClick = { /* do something */ }) {
                 Icon(
                     painterResource(id = R.drawable.ic_qualify_3_back),
-                    contentDescription = "Back"
+                    contentDescription = "Back",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
         },
         actions = {
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(
+                modifier = Modifier.size(48.dp),
+                onClick = { /* do something */ }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_qualify_3_copy),
-                    contentDescription = "copy button"
+                    contentDescription = "copy button",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(
+                modifier = Modifier.size(48.dp),
+                onClick = { /* do something */ }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_qualify_3_calendar),
-                    contentDescription = "calendar button"
+                    contentDescription = "calendar button",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(
+                modifier = Modifier.size(48.dp),
+                onClick = { /* do something */ }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_qualify_3_menu),
-                    contentDescription = "menu button"
+                    contentDescription = "menu button",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
         }
@@ -187,7 +199,6 @@ fun CardContent(title: String, body: String) {
         modifier = Modifier
             .padding(bottom = 16.dp)
             .padding(horizontal = 16.dp)
-            .clip(RoundedCornerShape(16.dp))
     ) {
         Row(
             modifier = Modifier
