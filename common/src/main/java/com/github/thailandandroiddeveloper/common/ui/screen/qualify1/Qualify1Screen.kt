@@ -16,8 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -68,7 +66,7 @@ fun AppBar() {
             IconButton(
                 onClick = { /*TODO*/ },
             ) {
-                Image(
+                Icon(
                     modifier = Modifier.fillMaxSize(),
                     painter = painterResource(id = R.drawable.ic_qualify_1_menu),
                     contentDescription = "menu button",
@@ -80,7 +78,7 @@ fun AppBar() {
                 modifier = Modifier.size(40.dp),
                 onClick = { /*TODO*/ },
             ) {
-                Image(
+                Icon(
                     modifier = Modifier.fillMaxSize(),
                     painter = painterResource(id = R.drawable.ic_qualify_1_profile),
                     contentDescription = "profile button",
