@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -37,6 +38,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.github.thailandandroiddeveloper.common.R
 import com.github.thailandandroiddeveloper.common.ui.preview.Pixel7
 import com.github.thailandandroiddeveloper.common.ui.theme.AppTheme
@@ -119,10 +121,16 @@ fun Tags() {
         lists.forEach { it ->
             FilterChip(
                 modifier = Modifier
-                    .height(32.dp),
+                    .height(32.dp)
+                    .width(68.dp),
                 selected = it.contains("1"),
                 onClick = { },
-                label = { Text(it, style = MaterialTheme.typography.labelLarge) },
+                label = {
+                    Text(
+                        it,
+                        style = MaterialTheme.typography.labelLarge.copy(letterSpacing = .5.sp)
+                    )
+                },
                 colors = FilterChipDefaults.filterChipColors(
                     labelColor = MaterialTheme.colorScheme.outline,
                     selectedLabelColor = MaterialTheme.colorScheme.primary,
@@ -149,7 +157,10 @@ fun AppBar() {
         title = {
             Text(
                 "John Doe",
-                style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.onPrimaryContainer)
+                style = MaterialTheme.typography.titleLarge.copy(
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    letterSpacing = .5.sp
+                )
             )
         },
         navigationIcon = {
@@ -223,15 +234,15 @@ fun CardContent(title: String, body: String) {
             Column(modifier = Modifier.padding(start = 8.dp)) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleMedium.copy(letterSpacing = .5.sp),
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = body,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    style = MaterialTheme.typography.bodyMedium.copy(letterSpacing = .5.sp),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         }
