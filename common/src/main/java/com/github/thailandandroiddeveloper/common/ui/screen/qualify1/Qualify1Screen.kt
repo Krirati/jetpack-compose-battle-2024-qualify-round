@@ -31,10 +31,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.github.thailandandroiddeveloper.common.R
 import com.github.thailandandroiddeveloper.common.ui.preview.Pixel7
@@ -97,10 +97,13 @@ fun ContentCard() {
         Image(
             modifier = Modifier
                 .clip(RoundedCornerShape(16.dp))
-                .constrainAs(image) {},
+                .constrainAs(image) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                },
             painter = painterResource(id = R.drawable.img_qualify_1_profile),
-            contentDescription = "image jone due",
-            contentScale = ContentScale.FillWidth
+            contentDescription = "image john due",
         )
         Box(
             modifier = Modifier
@@ -125,6 +128,7 @@ fun ContentCard() {
 fun ContentOverlay() {
     Box(
         modifier = Modifier
+            .height(192.dp)
             .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
             .background(
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.75F)
@@ -133,14 +137,15 @@ fun ContentOverlay() {
     ) {
         Column(
             verticalArrangement = Arrangement.Bottom,
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp, end = 20.dp, bottom = 40.dp)
+            modifier = Modifier.padding(horizontal = 20.dp)
         ) {
             Text(
                 text = "John Doe",
                 style = MaterialTheme.typography.headlineMedium
-                    .copy(color = MaterialTheme.colorScheme.onPrimary)
+                    .copy(color = MaterialTheme.colorScheme.onPrimary, letterSpacing = .5.sp),
+                modifier = Modifier.padding(top = 20.dp, bottom = 8.dp)
             )
-            Row(modifier = Modifier.padding(top = 10.dp)) {
+            Row(modifier = Modifier.padding(bottom = 8.dp)) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_qualify_1_gender_male),
                     contentDescription = "gender male icon",
@@ -150,14 +155,14 @@ fun ContentOverlay() {
                 Text(
                     text = "Male",
                     style = MaterialTheme.typography.bodyMedium
-                        .copy(color = MaterialTheme.colorScheme.onPrimary)
+                        .copy(color = MaterialTheme.colorScheme.onPrimary, letterSpacing = .5.sp)
                 )
             }
             Text(
                 text = "Lorem ipsum dolor sit amet, cd nulla lacinia, quis fringilla lorem imperdiet. Proin in quam vel odio iaculis fringilla.",
                 style = MaterialTheme.typography.bodyMedium
-                    .copy(color = MaterialTheme.colorScheme.onPrimary),
-                modifier = Modifier.padding(top = 10.dp)
+                    .copy(color = MaterialTheme.colorScheme.onPrimary, letterSpacing = .5.sp),
+                modifier = Modifier.padding(bottom = 40.dp)
             )
         }
     }
