@@ -60,9 +60,21 @@ fun Qualify3Screen() {
                     .horizontalScroll(rememberScrollState())
                     .padding(top = 16.dp)
             ) {
-                CardItem(R.drawable.img_qualify_3_photo_1, true)
-                CardItem(R.drawable.img_qualify_3_photo_2, false)
-                CardItem(R.drawable.img_qualify_3_photo_3, false)
+                CardItem(
+                    image = R.drawable.img_qualify_3_photo_1,
+                    withBorder = true,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+                CardItem(
+                    image = R.drawable.img_qualify_3_photo_2,
+                    withBorder = false,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+                CardItem(
+                    image = R.drawable.img_qualify_3_photo_3,
+                    withBorder = false,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
             }
 
             Tags()
@@ -88,10 +100,9 @@ fun Qualify3Screen() {
 }
 
 @Composable
-fun CardItem(image: Int, withBorder: Boolean) {
+fun CardItem(image: Int, withBorder: Boolean, modifier: Modifier) {
     Box(
-        modifier = Modifier
-            .padding(start = 16.dp)
+        modifier = modifier
             .size(160.dp, 320.dp)
             .clip(RoundedCornerShape(16.dp))
     ) {
